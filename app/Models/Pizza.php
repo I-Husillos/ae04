@@ -11,4 +11,9 @@ class Pizza extends Model
         'descripcion',
         'precio'
     ];
+
+    public function ingredientes()
+    {
+        return $this->belongsToMany(Ingrediente::class);
+    }
 }
