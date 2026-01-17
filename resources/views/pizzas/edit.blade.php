@@ -1,4 +1,4 @@
-<h1>Nueva pizza</h1>
+<h1>Editar Pizza</h1>
 
 @if($errors->any())
     <div style="color:red">
@@ -10,24 +10,23 @@
     </div>
 @endif
 
-
-
-<form method="POST" action="{{ route('pizzas.store') }}">
+<form method="POST" action="{{ route('pizzas.update', $pizza->id) }}">
     @csrf
-    
-    <input type="text" name="nombre" placeholder="Nombre" value="{{ old('nombre') }}">
+    @method('PUT')
 
-    <textarea id="descripcion" name="descripcion">{{ old('descripcion') }}</textarea>
+    <input type="text" name="nombre" value="{{ $pizza->nombre }}">
 
-    <input type="number" name="precio" step="0.01" value="{{ old('precio') }}">
+    <textarea id="descripcion" name="descripcion">{{ $pizza->descripcion }}</textarea>
 
-    <h3>Ingredientes</h3>
+    <input type="number" step="0.01" name="precio" value="{{ $pizza->precio }}">
+
+    <h3>Ingredientes:</h3>
     <@foreach ($ingredientes as $ingrediente)
-        <lavel>
+        <label>
             <input type="checkbox" name="ingredientes[]" value="{{ $ingrediente->id }}" {{in_array($ingrediente->id, old('ingredientes', [])) ? 'checked' : ''}}>
             {{ $ingrediente->nombre }}
         </label><br>
     @endforeach
 
-    <button type="submit">Crear</button>
+    <button type="submit">Actualizar</button>
 </form>

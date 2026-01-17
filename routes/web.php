@@ -13,3 +13,5 @@ Route::get('/pizzas/create', [pizzaController::class, 'create'])->name('pizzas.c
 Route::get('/pizzas/{id}/edit', [pizzaController::class, 'edit'])->name('pizzas.edit');
 Route::put('/pizzas/{id}', [pizzaController::class, 'update'])->name('pizzas.update');
 
+Route::delete('/pizzas/confirmDelete/{pizza}', [pizzaController::class, 'confirmDelete'])->name('pizzas.confirmDelete');
+Route::delete('/pizzas/destroy/{pizza}', [pizzaController::class, 'delete'])->name('pizzas.destroy');
