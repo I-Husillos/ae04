@@ -22,7 +22,7 @@
     <input type="number" name="precio" step="0.01" value="{{ old('precio') }}">
 
     <h3>Ingredientes</h3>
-    <@foreach ($ingredientes as $ingrediente)
+    @foreach ($ingredientes as $ingrediente)
         <lavel>
             <input type="checkbox" name="ingredientes[]" value="{{ $ingrediente->id }}" {{in_array($ingrediente->id, old('ingredientes', [])) ? 'checked' : ''}}>
             {{ $ingrediente->nombre }}

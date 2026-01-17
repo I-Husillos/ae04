@@ -21,9 +21,9 @@
     <input type="number" step="0.01" name="precio" value="{{ $pizza->precio }}">
 
     <h3>Ingredientes:</h3>
-    <@foreach ($ingredientes as $ingrediente)
+    @foreach ($ingredientes as $ingrediente)
         <label>
-            <input type="checkbox" name="ingredientes[]" value="{{ $ingrediente->id }}" {{in_array($ingrediente->id, old('ingredientes', [])) ? 'checked' : ''}}>
+            <input type="checkbox" name="ingredientes[]" value="{{ $ingrediente->id }}" {{ $pizza->ingredientes->contains($ingrediente) ? 'checked' : '' }}>
             {{ $ingrediente->nombre }}
         </label><br>
     @endforeach

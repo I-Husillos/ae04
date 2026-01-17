@@ -1,17 +1,31 @@
 <?php
 
+use App\Http\Controllers\IngredienteController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\pizzaController;
+use App\Http\Controllers\PizzaController;
 
-Route::get('/', [pizzaController::class, 'showAllPizzas'])->name('pizzas.showAllPizzas');
-Route::get('/pizza/{id}', [pizzaController::class, 'showOnePizzas'])->name('pizzas.showOnePizza');
+Route::get('/', [PizzaController::class, 'showAllPizzas'])->name('pizzas.showAllPizzas');
+Route::get('/pizza/{id}', [PizzaController::class, 'showOnePizzas'])->name('pizzas.showOnePizza');
 
 
-Route::post('/pizzas', [pizzaController::class, 'store'])->name('pizzas.store');
-Route::get('/pizzas/create', [pizzaController::class, 'create'])->name('pizzas.create');
+Route::post('/pizzas', [PizzaController::class, 'store'])->name('pizzas.store');
+Route::get('/pizzas/create', [PizzaController::class, 'create'])->name('pizzas.create');
 
-Route::get('/pizzas/{id}/edit', [pizzaController::class, 'edit'])->name('pizzas.edit');
-Route::put('/pizzas/{id}', [pizzaController::class, 'update'])->name('pizzas.update');
+Route::get('/pizzas/{id}/edit', [PizzaController::class, 'edit'])->name('pizzas.edit');
+Route::put('/pizzas/{id}', [PizzaController::class, 'update'])->name('pizzas.update');
 
-Route::delete('/pizzas/confirmDelete/{pizza}', [pizzaController::class, 'confirmDelete'])->name('pizzas.confirmDelete');
-Route::delete('/pizzas/destroy/{pizza}', [pizzaController::class, 'delete'])->name('pizzas.destroy');
+Route::get('/pizzas/confirmDelete/{pizza}', [PizzaController::class, 'confirmDelete'])->name('pizzas.confirmDelete');
+Route::delete('/pizzas/destroy/{pizza}', [PizzaController::class, 'destroy'])->name('pizzas.destroy');
+
+
+Route::get('/ingredientes', [IngredienteController::class, 'showAllIngredientes'])->name('ingredientes.showAllIngredientes');
+
+Route::post('/ingredientes', [IngredienteController::class, 'store'])->name('ingredientes.store');
+Route::get('/ingredientes/create', [IngredienteController::class, 'create'])->name('ingredientes.create');
+Route::get('/ingredientes/{id}', [IngredienteController::class, 'showOneIngrediente'])->name('ingredientes.showOneIngrediente');
+
+Route::get('/ingredientes/{id}/edit', [IngredienteController::class, 'edit'])->name('ingredientes.edit');
+Route::put('/ingredientes/{id}', [IngredienteController::class, 'update'])->name('ingredientes.update');
+
+Route::get('/ingredientes/confirmDelete/{ingrediente}', [IngredienteController::class, 'confirmDelete'])->name('ingredientes.confirmDelete');
+Route::delete('/ingredientes/destroy/{ingrediente}', [IngredienteController::class, 'destroy'])->name('ingredientes.destroy');

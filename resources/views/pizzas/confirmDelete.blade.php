@@ -5,7 +5,7 @@
     <strong>"{{ $pizza->nombre }}"?</strong>
 </p>
 
-<form method="POST" action="{{ route('pizzas.destroy', $pizza->id) }}">
+<form method="POST" action="{{ route('pizzas.destroy', $pizza) }}">
     @csrf
     @method('DELETE')
     <button type="submit">Eliminar</button>

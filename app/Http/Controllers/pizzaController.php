@@ -8,7 +8,7 @@ use App\Models\Pizza;
 use App\Models\Ingrediente;
 use Illuminate\Support\Facades\Redirect;
 
-class pizzaController extends Controller
+class PizzaController extends Controller
 {
     public function showAllPizzas()
     {
@@ -50,7 +50,7 @@ class pizzaController extends Controller
         $pizza = Pizza::create($request->only(['nombre', 'descripcion', 'precio']));
 
         if($request->has('ingredientes')){
-            $pizza->ingredientes()->attach($request->all('ingredientes'));
+            $pizza->ingredientes()->attach($request->input('ingredientes'));
         }
 
         return redirect()->route('pizzas.showAllPizzas');
@@ -62,7 +62,7 @@ class pizzaController extends Controller
         $pizza = Pizza::with('ingredientes')->findOrFail($id);
         $ingredientes = Ingrediente::all();
 
-        return view('pizza.edit', compact('pizza', 'ingredientes'));
+        return view('pizzas.edit', compact('pizza', 'ingredientes'));
     }
 
     public function update(Request $request, $id)
@@ -98,7 +98,7 @@ class pizzaController extends Controller
         return view('pizzas.confirmDelete', compact('pizza'));
     }
 
-    public function delete(Pizza $pizza)
+    public function destroy(Pizza $pizza)
     {
         $pizza->delete();
 
