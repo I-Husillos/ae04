@@ -34,6 +34,8 @@ class IngredienteController extends Controller
             'nombre.required' => 'El nombre es obligatorio'
         ]);
 
+        $ingrediente = Ingrediente::create($request->only(['nombre']));
+
         return redirect()->route('ingredientes.showAllIngredientes');
     }
 

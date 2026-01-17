@@ -7,12 +7,11 @@
 
 <table>
     <tr>
-        <th>Pizza</th>
-        <th>Precio</th>
+        <th>Ingrediente</th>
     </tr>
     @foreach ($ingredientes as $ingrediente)
         <tr>
-            <td><a href="{{ route('ingredientes.showOnePizza', $ingrediente->id) }}">{{$ingrediente->nombre}}</a></td>
+            <td><a href="{{ route('ingredientes.showOneIngrediente', $ingrediente->id) }}">{{$ingrediente->nombre}}</a></td>
             <td>{{$ingrediente->precio}}</td>
             <td><a href="{{ route('ingredientes.edit', $ingrediente->id) }}">Editar</a></td>
             <td><a href="{{ route('ingredientes.confirmDelete', $ingrediente->id) }}">Eliminar</a></td>
