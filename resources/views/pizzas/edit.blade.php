@@ -1,3 +1,4 @@
+@include('layout.menu')
 <h1>Editar Pizza</h1>
 
 @if($errors->any())

@@ -1,3 +1,4 @@
+@include('layout.menu')
 @if(session('success'))
     <div>
         {{ session('success') }}
